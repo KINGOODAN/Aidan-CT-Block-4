@@ -15,7 +15,8 @@ def mainProgram():
             print("Choose from the following options. Type a number below!")
             choice = input("""1. Add to a list
 2. Return the value at an index position
-3. ExitProgram     """)
+3. Random Search 
+4. ExitProgram     """)
             if choice == "1":
                 addToList()
             elif choice == "2":
