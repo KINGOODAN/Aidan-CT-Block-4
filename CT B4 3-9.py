@@ -16,19 +16,26 @@ def mainProgram():
             print("Choose from the following options. Type a number below!")
             choice = input("""  1. Add to a list
     2. Add a bunch of numbers
-    3. Return the value at an index position
-    4. Random Search 
-    5. Print contents of list
-    6. ExitProgram     """)
+    3. Add a few
+    4. Return the value at an index position
+    5. Random Search 
+    6. Linear Search
+    7. Print contents of list
+    8. ExitProgram
+     -- """)
             if choice == "1":
                 addToList()
             elif choice == "2":
                 addABunch()
             elif choice == "3":
-                indexValues()
+                addAFew()
             elif choice == "4":
-                randomSearch()
+                indexValues()
             elif choice == "5":
+                randomSearch()
+            elif choice == "6":
+                linearSearch()
+            elif choice == "7":
                 print(myList)
             else:
                 break
@@ -38,20 +45,28 @@ def mainProgram():
 
 def addToList():
     print ("Adding to a list! Great choice!")
-    newItem = input ("Type an integer here!     ")
+    newItem = input ("Type an integer here!" + "\n -- ")
     myList.append(int(newItem))
 
 def addABunch():
     print ("We're gonna add a bunch of integers here!")
-    numToAdd = input("How many new integers would you like to add?     ")
-    numRange = input("And how high would you like these numbers to go?     ")
+    numToAdd = input("How many new integers would you like to add?" + "\n -- ")
+    numRange = input("And how high would you like these numbers to go?" + "\n -- ")
     for myList in range(0, int(numToAdd)):
         myList.append(random.randint(0,int(numRange)))
     print("Your list is a new complete.")
 
+def addAFew():
+    while True:
+        print("It seem that you want to add a few numbers!" + "\n -- ")
+        whatNum = input("What numbers would you like to add if you are done type stop." + "\n -- ")
+        myList.append(int(whatNum))
+        if whatNum == ("stop"):
+            return
+
 def indexValues():
     print ("Ohhh! I eard you need a particular piece of data")
-    indexPos = input("What index position are you curious about?     ")
+    indexPos = input("What index position are you curious about?" + "\n -- ")
     print(myList[int(indexPos)-1])
 
 def randomSearch():
@@ -60,7 +75,7 @@ def randomSearch():
 
 def linearSearch():
     print("We're gonna check out each ietm ona at a time in your list! This sucks.")
-    searchItem = input("What you lookin for, pardner?     ")
+    searchItem = input("What you lookin for, pardner?" + "\n -- ")
     for x in range(len(myList)):
         if myList [x] == (searchItem):
             print (f"Your item is at index position {x}")
