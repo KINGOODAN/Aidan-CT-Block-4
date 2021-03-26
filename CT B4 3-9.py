@@ -94,6 +94,14 @@ def linearSearch():
         if myList[x] == int(searchItem):
             print (f"Your item is at index position {x}")
 #----------
+def recursiveBinarySearch(unique_list, low, high, x):
+    if high >= low:
+        mid = (high + low) // 2
+        
+
+    else:
+        print("Your number isn't here!")
+#----------
 def printLists():
     if len(unique_list) == 0:
         print(myList)
