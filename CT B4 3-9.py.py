@@ -16,7 +16,7 @@ def mainProgram():
         try:
             print("Hello, there! Let's work with lists!")
             print("Choose from the following options. Type a number below!")
-            choice = input("""    1. Add to a list
+            choice = input("""    1.  Add to a list
     2.  Add a bunch of numbers
     3.  Add a few
     4.  Return the value at an index position
@@ -26,7 +26,9 @@ def mainProgram():
     8.  Recursive Binary Search
     9.  Iterative Binary Search
     10. Print lists
-    11. Quit
+    11. Delete a number from a list
+    12. Clear List
+    13. Quit
      -- """)
             if choice == "1":
                 addToList()
@@ -44,9 +46,11 @@ def mainProgram():
                 linearSearch()
             elif choice == "8":
                 binSearch = input("What number are you looking for?" + "\n -- ")
+                sortListNoDis(myList)
                 recursiveBinarySearch(unique_list, 0, len(unique_list)-1, int(binSearch))
             elif choice == "9":
                 binSearch = input("What number are you looking for?" + "\n -- ")
+                sortListNoDis(myList)
                 result = iterativeBinarySearch(unique_list, int(binSearch))
                 if result != -1:
                     print(f"Your number is at index position {result}")
@@ -54,6 +58,10 @@ def mainProgram():
                     print("Your number is not found in that list, bud! Have you sorted your list?")
             elif choice == "10":
                 printLists()
+            elif choice == "11":
+                deleteListItem(myList, unique_list)
+            elif choice == "12":
+                clearList(myList, unique_list)
             else:
                 break
         except:
@@ -68,7 +76,7 @@ def addABunch():
     print ("We're gonna add a bunch of integers here!")
     numToAdd = input("How many new integers would you like to add?" + "\n -- ")
     numRange = input("And how high would you like these numbers to go?" + "\n -- ")
-    for x in range(0, int(numToAdd)):
+    for numToAdd in range(0, int(numToAdd)):
         myList.append(random.randint(0, int(numRange)))
     print("Your list is a new complete.")
 #----------
@@ -85,7 +93,7 @@ def indexValues():
     indexPos = input("What index position are you curious about?" + "\n -- ")
     print(myList[int(indexPos)])
 #----------
-def sortList (myList):
+def sortList(myList):
     print("A litte birdie told me you needed some sorted data!")
     for x in myList:
         if x not in unique_list:
@@ -94,6 +102,12 @@ def sortList (myList):
     showMe = input('Wanna see your new list?   Y/N' + "\n -- ")
     if showMe.lower() == 'y':
         print(unique_list)
+#-----------
+def sortListNoDis(myList):
+    for x in myList:
+        if x not in unique_list:
+            unique_list.append(x)
+    unique_list.sort()
 #----------
 def randomSearch():
     print("RaNdOm SeArCh?!?")
@@ -142,6 +156,59 @@ def printLists():
             print(unique_list)
         else:
             print(myList)
+#----------
+def deleteListItem(myList, unique_list):
+    if len(unique_list) == 0:
+        print("I hear you want to delete an item from myList aye.")
+        itemToDelete = input("What number do you want to delete?" + "\n -- ")
+        for x in range(len(myList)):
+            if myList[x] == int(itemToDelete):
+                myList.pop(x)
+        print(f"{itemToDelete} has been deleted from myList")
+    else:
+        print("I hear you want to delete an item from a list aye.")
+        listToDeleteFrom = input("Which list would you like to delete a number from? myList or unique_list" + "\n -- ")
+        if listToDeleteFrom.lower() == "mylist":
+            itemToDelete = input("What number do you want to delete?" + "\n -- ")
+            for x in range(len(myList)):
+                if myList[x] == int(itemToDelete):
+                    myList.pop(x)
+            print(f"{itemToDelete} has been deleted from myList")
+        else:
+            itemToDelete = input("What number do you want to delete?" + "\n -- ")
+            for x in range(len(unique_list)):
+                if unique_list[x] == int(itemToDelete):
+                    unique_list.pop(x)
+            print(f"{itemToDelete} has been deleted from unique_list.")
+#----------
+def clearList(myList, unique_list):
+    if len(unique_list) == 0:
+        print("It seems that you want to clear myList.")
+        confermation = input("Are you sure you want to clear myList? Y/N" + "\n -- ")
+        if confermation.lower() == "y":
+            list.clear(myList)
+            print("myList has been cleared.")
+        else:
+            pass
+    else:
+        print("It seems that you wnt to clear a list.")
+        listToClear = input("Which list would you like to clear? myList or unique_list" + "\n -- ")
+        if listToClear.lower() == "mylist":
+            confermation = input("Are you sure you want to clear myList? Y/N" + "\n -- ")
+            if confermation.lower() == "y":
+                list.clear(myList)
+                print("myList has been cleared.")
+            else:
+                pass
+        elif listToClear.lower() == "unique_list":
+            confermation = input("Are you sure you want to clear unique_list? Y/N" + "\n -- ")
+            if confermation.lower() == "y":
+                list.clear(unique_list)
+                print("unique_list has been cleared.")
+            else:
+                pass
+        else:
+            print("That is not a valid list")
 #----------
 if __name__ == "__main__":
     mainProgram()
