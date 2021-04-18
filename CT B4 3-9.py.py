@@ -124,6 +124,10 @@ def indexValues():
 #----------
 '''
     sortList()
+    First, we have a for loop which looks at each item in myList.
+    Then there is an if statement that says if the number that is being looked at is not already in uique_list add it to it.
+    It goes through every item in the list then it sorts the list in numerical order.
+    Next, we have an input that asks if you want to see the list and if you type Y it will show it to you if it is anything else it will take it as an N.
     '''
 def sortList(myList):
     print("A litte birdie told me you needed some sorted data!")
@@ -136,7 +140,9 @@ def sortList(myList):
         print(unique_list)
 #-----------
 '''
-    sortListNoDis
+    sortListNoDis()
+    This is very similar to sortList in the way that it goes through myList and adds items to unique_list if they are not already in there. 
+    The difference is that it does not display anything and it is just used along with other functions, not on its own.
     '''
 def sortListNoDis(myList):
     for x in myList:
@@ -145,7 +151,9 @@ def sortListNoDis(myList):
     unique_list.sort()
 #----------
 '''
-    randomSearch
+    randomSearch()
+    Here we use the random liberty to get a random value and show that index postion. 
+    The way we do that is by taking the length of mylist and subtract 1 then we finding a random number between the length and 0 and print that index position.
     '''
 def randomSearch():
     print("RaNdOm SeArCh?!?")
@@ -153,6 +161,9 @@ def randomSearch():
 #----------
 '''
     linearSearch()
+    First, we give an input to determine the number that is being looked for. 
+    Then we have a for loop which makes it so that it will check every item in the list. 
+    Then using x as our variable we go through the list and if x is equal to the imputed number it prints a message that gives you the index position of that number.
     '''
 def linearSearch():
     print("We're gonna check out each ietm ona at a time in your list! This sucks.")
@@ -163,6 +174,13 @@ def linearSearch():
 #----------
 '''
     recursiveBinarySearch()
+    This function uses sortListNoDis to make sure that the list is sorted before it runs because if it is not sorted it does not work.
+    We start with an if statement that checks to make sure that the highest value is greater than or equal to the lowest value.
+    Then it finds the middle value by adding the highest value and the lowest value then dividing them by 2.
+    Then it checks to see if the middle value is equal to x which is an input that is initiated in mainProgram. 
+    If the middle value is equal to x then it prints a message that tells you that index position.
+    If it is not the middle value it checks to see if mid is greater than x if it is then it makes mid - 1 the new high value.
+    If not then means that mid is less than x and it makes mid + 1 the new low value and it contim=nues until mid = x.
     '''
 def recursiveBinarySearch(unique_list, low, high, x):
     if high >= low:
@@ -179,6 +197,12 @@ def recursiveBinarySearch(unique_list, low, high, x):
 #----------
 '''
     iterativeBinarySearch()
+    This function uses sortListNoDis to make sure that the list is sorted before it runs because if it is not sorted it does not work.
+    First, it sets low and mid values to 0 and high value to the length of unique_list - 1.
+    Then it has a while loop which makes the code run until stopped and it stops when low is not less than or equal to high.
+    Then similarly to recursiveBinarySearch, it goes through and changes the value of mid depending on if mid is less than or greater than x.
+    Then once low is not less than or equal to high it returns -1 which triggers code to run in mainProgram. 
+    What that does is it prints out the index location of where it stopped which is the index position of x.
     '''
 def iterativeBinarySearch(unique_list, x):
     low = 0
@@ -196,6 +220,10 @@ def iterativeBinarySearch(unique_list, x):
 #----------
 '''
     printLists()
+    Here we start with an if statement that checks to see if there are any items in uniqu_list.
+    If there are none it prints myList.
+    If there are items in unique_list it will give an input that asks which list you want to print. 
+    Then based on the input we will either print myList or unique_list.
     '''
 def printLists():
     if len(unique_list) == 0:
@@ -209,6 +237,9 @@ def printLists():
 #----------
 '''
     delFromMyList()
+    This function is not used on its own it is used in other functions to make the code smaller.
+    First, it starts by giving an input that asks what number you want to delete.
+    Then very similar to linearSearch it goes through every item in the list and determining if it matches the input but in this case, if it matches the input it will be deleted from the list.
     '''
 def delFromMyList(myList):
     itemToDelete = input("What number do you want to delete?" + "\n -- ")
@@ -218,7 +249,10 @@ def delFromMyList(myList):
     print(f"{itemToDelete} has been deleted from myList")
 #----------
 '''
-    deleteListItem
+    deleteListItem()
+    We start with an if statement that checks if there are items in unique_list if there are not any it runs delFromMyList.
+    If there are items in unique_list it gives an input that lest you chose which list to delete from.
+    If you chose myList it runs delFromMyList if you choose unique_list it runs basically the same code as delFromMyList except that it affects unique_list.
     '''
 def deleteListItem(myList, unique_list, delFromMyList):
     if len(unique_list) == 0:
@@ -237,6 +271,11 @@ def deleteListItem(myList, unique_list, delFromMyList):
 #----------
 '''
     clearList()
+    This function has a very similar format to deleteListItem.
+    The differences between them are that this one does not use any other functions to work. 
+    Also, it gives inputs to double-check that the user wants to clear the list and that instead of deleting an item it clears the list.
+    Also because it is clearing the list it does not have to go through each item in the list checking if it is the needed one.
+
     '''
 def clearList(myList, unique_list):
     if len(unique_list) == 0:
